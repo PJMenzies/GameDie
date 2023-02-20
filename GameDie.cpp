@@ -66,4 +66,5 @@ vector <double> GameDie::get_percentages(){
     for(unsigned int i = 0; i < counter.size(); i++) {
         result[i] = counter[i]/(double)total;
     }
+    return result;
 }
