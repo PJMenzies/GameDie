@@ -44,3 +44,26 @@ int GameDie::roll()
 vector <int> GameDie::get_distribution(){
     return counter;
 }
+
+// returns the percentage of rolls for each face relative to the number of total
+// rolls. Each percentage should be a double between 0 and 1 inclusively. For
+// example, if we have a 4-sided die that has rolled each face 1 time and
+// has the get_distribution() of:
+// {1,1,1,1}
+// then the get_percentages() function should return:
+// {0.25,0.25,0.25,0.25}
+// If there are no rolls yet, percentages should report 0 for each face in the vector. Otherwise, the percentage should be calculated by face rolls / total rolls.
+vector <double> GameDie::get_percentages(){
+    vector <double> result;
+    int total = 0;
+    result.resize(counter.size());
+    for(unsigned int i = 0; i < counter.size(); i++) {
+        total += counter[i];
+    }
+    if(total == 0) {
+        return result;
+    }
+    for(unsigned int i = 0; i < counter.size(); i++) {
+        result[i] = counter[i]/(double)total;
+    }
+}
